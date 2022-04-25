@@ -114,7 +114,7 @@ class Customers(IncrementalBoldStream):
         """
         response = response.json()["pagination"]
         next_page = response["current_page"] + 1
-        return {"page": next_page} if next_page <= 3 else None
+        return {"page": next_page} if next_page <= response["total_pages"] else None
 
     def path(
         self,
