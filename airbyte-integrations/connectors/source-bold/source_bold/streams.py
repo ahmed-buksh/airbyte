@@ -1,13 +1,9 @@
+import datetime
 from abc import ABC, abstractmethod
-from typing import Any, Iterable, List, Mapping, MutableMapping, Optional, Tuple
+from typing import Any, Iterable, Mapping, MutableMapping, Optional
 
 import requests
-import datetime
-from airbyte_cdk.sources import AbstractSource
-from airbyte_cdk.sources.streams import Stream
 from airbyte_cdk.sources.streams.http import HttpStream
-from airbyte_cdk.sources.streams.http.auth import TokenAuthenticator
-
 from source_bold.schemas import Customer, Product, Category
 
 
@@ -30,17 +26,15 @@ class BoldStream(HttpStream, ABC):
     def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
         """
         This method should return a Mapping (e.g: dict) containing whatever information required to make paginated requests. This dict is passed
-        to most other methods in this class to help you form headers, request bodies, query params, etc..
-
-        For example, if the API accepts a 'page' parameter to determine which page of the result to return, and a response from the API contains a
-        'page' number, then this method should probably return a dict {'page': response.json()['page'] + 1} to increment the page count by 1.
-        The request_params method should then read the input next_page_token and set the 'page' param to next_page_token['page'].
+        to most other methods in this class to help you form headers, request bodies, query params, etc.
 
         :param response: the most recent response from the API
         :return If there is another page in the result, a mapping (e.g: dict) containing information needed to query the next page in the response.
                 If there are no more pages in the result, return None.
         """
-        return {}
+        response = response.json()
+        next_page = response["current_page"] + 1
+        return {"page": next_page} if next_page <= response["total_pages"] else None
 
     def request_params(
         self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, any] = None, next_page_token: Mapping[str, Any] = None
@@ -48,7 +42,8 @@ class BoldStream(HttpStream, ABC):
         """
         Usually contains common params e.g. pagination size etc.
         """
-        pass
+        next_page_token = next_page_token or {}
+        return {**next_page_token}
 
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
         """
@@ -108,11 +103,24 @@ class Customers(IncrementalBoldStream):
     primary_key = "id"
     cursor_field = "created_at"
 
+    def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
+        """
+        This method should return a Mapping (e.g: dict) containing whatever information required to make paginated requests. This dict is passed
+        to most other methods in this class to help you form headers, request bodies, query params, etc.
+
+        :param response: the most recent response from the API
+        :return If there is another page in the result, a mapping (e.g: dict) containing information needed to query the next page in the response.
+                If there are no more pages in the result, return None.
+        """
+        response = response.json()["pagination"]
+        next_page = response["current_page"] + 1
+        return {"page": next_page} if next_page <= 3 else None
+
     def path(
-            self,
-            stream_state: Mapping[str, Any] = None,
-            stream_slice: Mapping[str, Any] = None,
-            next_page_token: Mapping[str, Any] = None
+        self,
+        stream_state: Mapping[str, Any] = None,
+        stream_slice: Mapping[str, Any] = None,
+        next_page_token: Mapping[str, Any] = None
     ) -> str:
         """
         Specifies path for customers endpoint of bold.
@@ -129,10 +137,10 @@ class Products(IncrementalBoldStream):
     cursor_field = "created_at"
 
     def path(
-            self,
-            stream_state: Mapping[str, Any] = None,
-            stream_slice: Mapping[str, Any] = None,
-            next_page_token: Mapping[str, Any] = None
+        self,
+        stream_state: Mapping[str, Any] = None,
+        stream_slice: Mapping[str, Any] = None,
+        next_page_token: Mapping[str, Any] = None
     ) -> str:
         return f"products/v2/shops/{self.shop_identifier}/products"
 
