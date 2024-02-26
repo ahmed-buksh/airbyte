@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "project_id": {
+      "type": ["null", "string"]
+    },
+    "project_name": {
+      "type": ["null", "string"]
+    },
+    "url": {
+      "type": ["null", "string"]
+    },
+    "domain_unicode": {
+      "type": ["null", "string"]
+    }
+  }
+}
