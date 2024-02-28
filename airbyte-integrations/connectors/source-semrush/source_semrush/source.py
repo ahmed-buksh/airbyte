@@ -9,7 +9,7 @@ from airbyte_cdk.sources.streams import Stream
 from airbyte_cdk.sources.streams.http import HttpStream
 from airbyte_cdk.sources.streams.http.auth import TokenAuthenticator
 from airbyte_cdk.sources.streams.http.auth.core import NoAuth
-from .streams import Projects
+from .streams import Projects, Backlinks
 """
 TODO: Most comments in this class are instructive and should be deleted after the source is implemented.
 
@@ -38,9 +38,9 @@ class SourceSemrush(AbstractSource):
         :return Tuple[bool, any]: (True, None) if the input config can be used to connect to the API successfully, (False, error) otherwise.
         """
         try:
-            Projects(api_key=config["api_key"])
+            Projects(api_key=config["api_key"], domain=config["domain"])
 
-            connection =  True, None
+            connection = True, None
         except Exception:
             connection = False, None
 
@@ -48,11 +48,7 @@ class SourceSemrush(AbstractSource):
 
 
     def streams(self, config: Mapping[str, Any]) -> List[Stream]:
-        """
-        TODO: Replace the streams below with your own streams.
-
-        :param config: A Mapping of the user input configuration as defined in the connector spec.
-        """
-        # TODO remove the authenticator if not required.
-        auth = TokenAuthenticator(token=config["api_key"])  # Oauth2Authenticator is also available if you need oauth support
-        return [Projects(api_key=config["api_key"])]
+        return [
+            Projects(api_key=config["api_key"], domain=config["domain"]),
+            Backlinks(api_key=config["api_key"], domain=config["domain"])
+        ]

@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "page_ascore": {
+      "type": ["null", "string"]
+    },
+    "source_title": {
+      "type": ["null", "string"]
+    },
+    "source_url": {
+      "type": ["null", "string"]
+    },
+    "target_url": {
+      "type": ["null", "string"]
+    },
+    "anchor": {
+      "type": ["null", "string"]
+    },
+    "external_num": {
+      "type": ["null", "string"]
+    },
+    "internal_num": {
+      "type": ["null", "string"]
+    },
+    "first_seen": {
+      "type": ["null", "string"]
+    },
+    "last_seen": {
+      "type": ["null", "string"]
+    }
+  }
+}

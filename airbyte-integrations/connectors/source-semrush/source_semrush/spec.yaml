@@ -5,9 +5,13 @@ connectionSpecification:
   type: object
   required:
     - api_key
+    - domain
   properties:
     # 'TODO: This schema defines the configuration required for the source. This usually involves metadata such as database and/or authentication information.':
     api_key:
       type: string
-      description: Api key for the semrush
+      description: API key for the semrush
       airbyte_secret: true
+    domain:
+      type: string
+      description: domain that we need data from
