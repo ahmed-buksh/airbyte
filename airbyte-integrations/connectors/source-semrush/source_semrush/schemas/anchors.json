@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "anchor": {
+      "type": ["null", "string"]
+    },
+    "domains_num": {
+      "type": ["null", "string"]
+    },
+    "backlinks_num": {
+      "type": ["null", "string"]
+    },
+    "first_seen": {
+      "type": ["null", "string"]
+    },
+    "last_seen": {
+      "type": ["null", "string"]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "domain_ascore": {
+      "type": ["null", "string"]
+    },
+    "domain": {
+      "type": ["null", "string"]
+    },
+    "backlinks_num": {
+      "type": ["null", "string"]
+    },
+    "ip": {
+      "type": ["null", "string"]
+    },
+    "country": {
+      "type": ["null", "string"]
+    },
+    "first_seen": {
+      "type": ["null", "string"]
+    },
+    "last_seen": {
+      "type": ["null", "string"]
+    }
+  }
+}

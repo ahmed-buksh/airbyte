@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Domain": {
+      "type": ["null", "string"]
+    },
+    "Competitor Relevance": {
+      "type": ["null", "string"]
+    },
+    "Common Keywords": {
+      "type": ["null", "string"]
+    },
+    "Organic Keywords": {
+      "type": ["null", "string"]
+    },
+    "Organic Traffic": {
+      "type": ["null", "string"]
+    },
+    "Organic Cost": {
+      "type": ["null", "string"]
+    },
+    "Adwords Keywords": {
+      "type": ["null", "string"]
+    }
+  }
+}

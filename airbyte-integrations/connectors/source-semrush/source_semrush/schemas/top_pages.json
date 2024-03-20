@@ -2,18 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "id": {
+    "page": {
       "type": ["null", "string"]
     },
-    "name": {
+    "display_date": {
       "type": ["null", "string"]
     },
-    "years_of_service": {
-      "type": ["null", "integer"]
+    "desktop_share": {
+      "type": ["null", "string"]
     },
-    "start_date": {
-      "type": ["null", "string"],
-      "format": "date-time"
+    "mobile_share": {
+      "type": ["null", "string"]
     }
   }
 }

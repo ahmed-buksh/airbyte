@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Domain": {
+      "type": ["null", "string"]
+    },
+    "Rank": {
+      "type": ["null", "string"]
+    },
+    "Organic Keywords": {
+      "type": ["null", "string"]
+    },
+    "Organic Traffic": {
+      "type": ["null", "string"]
+    },
+    "Organic Cost": {
+      "type": ["null", "string"]
+    },
+    "Adwords Keywords": {
+      "type": ["null", "string"]
+    },
+    "Adwords Traffic": {
+      "type": ["null", "string"]
+    },
+    "Adwords Cost": {
+      "type": ["null", "string"]
+    }
+  }
+}

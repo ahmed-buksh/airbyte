@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Keyword": {
+      "type": ["null", "string"]
+    },
+    "Position": {
+      "type": ["null", "string"]
+    },
+    "Previous Position": {
+      "type": ["null", "string"]
+    },
+    "Position Difference": {
+      "type": ["null", "string"]
+    },
+    "Search Volume": {
+      "type": ["null", "string"]
+    },
+    "CPC": {
+      "type": ["null", "string"]
+    },
+    "Visible Url": {
+      "type": ["null", "string"]
+    },
+    "Traffic (%)": {
+      "type": ["null", "string"]
+    },
+    "Traffic Cost": {
+      "type": ["null", "string"]
+    },
+    "Competition": {
+      "type": ["null", "string"]
+    },
+    "Number of Results": {
+      "type": ["null", "string"]
+    },
+    "Trends": {
+      "type": ["null", "string"]
+    }
+  }
+}

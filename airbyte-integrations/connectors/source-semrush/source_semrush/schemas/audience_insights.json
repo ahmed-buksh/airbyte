@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "target": {
+      "type": ["null", "string"]
+    },
+    "overlap_score": {
+      "type": ["null", "string"]
+    },
+    "similarity_score": {
+      "type": ["null", "string"]
+    },
+    "target_users": {
+      "type": ["null", "string"]
+    },
+    "overlap_users": {
+      "type": ["null", "string"]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ascore": {
+      "type": ["null", "string"]
+    },
+    "total": {
+      "type": ["null", "string"]
+    },
+    "source_url": {
+      "type": ["null", "string"]
+    },
+    "domains_num": {
+      "type": ["null", "string"]
+    },
+    "urls_num": {
+      "type": ["null", "string"]
+    },
+    "ipclassc_num": {
+      "type": ["null", "string"]
+    },
+    "follows_num": {
+      "type": ["null", "string"]
+    },
+    "nofollows_num": {
+      "type": ["null", "string"]
+    },
+    "sponsored_num": {
+      "type": ["null", "string"]
+    },
+    "ugc_num": {
+      "type": ["null", "string"]
+    },
+    "texts_num": {
+      "type": ["null", "string"]
+    },
+    "images_num": {
+      "type": ["null", "string"]
+    },
+    "forms_num": {
+      "type": ["null", "string"]
+    },
+    "frames_num": {
+      "type": ["null", "string"]
+    }
+  }
+}

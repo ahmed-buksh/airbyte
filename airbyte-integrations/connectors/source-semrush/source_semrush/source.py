@@ -1,15 +1,13 @@
 #
 # Copyright (c) 2023 Airbyte, Inc., all rights reserved.
 #
-from typing import Any, Iterable, List, Mapping, MutableMapping, Optional, Tuple
+from typing import List, Tuple
 
-import requests
 from airbyte_cdk.sources import AbstractSource
 from airbyte_cdk.sources.streams import Stream
-from airbyte_cdk.sources.streams.http import HttpStream
-from airbyte_cdk.sources.streams.http.auth import TokenAuthenticator
-from airbyte_cdk.sources.streams.http.auth.core import NoAuth
-from .streams import Projects, Backlinks
+
+from .streams import *
+
 """
 TODO: Most comments in this class are instructive and should be deleted after the source is implemented.
 
@@ -46,9 +44,24 @@ class SourceSemrush(AbstractSource):
 
         return connection
 
-
     def streams(self, config: Mapping[str, Any]) -> List[Stream]:
         return [
-            Projects(api_key=config["api_key"], domain=config["domain"]),
-            Backlinks(api_key=config["api_key"], domain=config["domain"])
+            Backlinks(api_key=config["api_key"], domain=config["domain"]),
+            BacklinksOverview(api_key=config["api_key"], domain=config["domain"]),
+            ReferringDomains(api_key=config["api_key"], domain=config["domain"]),
+            ReferringIps(api_key=config["api_key"], domain=config["domain"]),
+            TldDistribution(api_key=config["api_key"], domain=config["domain"]),
+            ReferringDomainsByCountry(api_key=config["api_key"], domain=config["domain"]),
+            Anchors(api_key=config["api_key"], domain=config["domain"]),
+            IndexedPages(api_key=config["api_key"], domain=config["domain"]),
+            Competitors(api_key=config["api_key"], domain=config["domain"]),
+            AuthorityScoreProfile(api_key=config["api_key"], domain=config["domain"]),
+            DomainOrganicSearchKeywords(api_key=config["api_key"], domain=config["domain"]),
+            DomainPaidSearchKeywords(api_key=config["api_key"], domain=config["domain"]),
+            CompetitorsInOrganicSearch(api_key=config["api_key"], domain=config["domain"]),
+            DomainOrganicPages(api_key=config["api_key"], domain=config["domain"]),
+            DomainOrganicSubdomains(api_key=config["api_key"], domain=config["domain"]),
+            DomainOverviewAllDatabases(api_key=config["api_key"], domain=config["domain"]),
+            DomainOverviewOneDatabase(api_key=config["api_key"], domain=config["domain"]),
+            DomainOverviewHistory(api_key=config["api_key"], domain=config["domain"]),
         ]

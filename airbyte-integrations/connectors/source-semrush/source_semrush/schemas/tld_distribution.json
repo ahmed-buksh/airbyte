@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "zone": {
+      "type": ["null", "string"]
+    },
+    "domains_num": {
+      "type": ["null", "string"]
+    },
+    "backlinks_num": {
+      "type": ["null", "string"]
+    }
+  }
+}

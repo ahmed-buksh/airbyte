@@ -2,16 +2,13 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "project_id": {
+    "country": {
       "type": ["null", "string"]
     },
-    "project_name": {
+    "domains_num": {
       "type": ["null", "string"]
     },
-    "url": {
-      "type": ["null", "string"]
-    },
-    "domain_unicode": {
+    "backlinks_num": {
       "type": ["null", "string"]
     }
   }

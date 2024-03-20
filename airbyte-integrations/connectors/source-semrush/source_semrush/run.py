@@ -8,6 +8,7 @@ import sys
 from airbyte_cdk.entrypoint import launch
 from .source import SourceSemrush
 
+
 def run():
     source = SourceSemrush()
     launch(source, sys.argv[1:])

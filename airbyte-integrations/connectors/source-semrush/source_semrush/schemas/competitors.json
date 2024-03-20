@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "ascore": {
+      "type": ["null", "string"]
+    },
+    "neighbour": {
+      "type": ["null", "string"]
+    },
+    "similarity": {
+      "type": ["null", "string"]
+    },
+    "common_refdomains": {
+      "type": ["null", "string"]
+    },
+    "domains_num": {
+      "type": ["null", "string"]
+    },
+    "backlinks_num": {
+      "type": ["null", "string"]
+    }
+  }
+}
