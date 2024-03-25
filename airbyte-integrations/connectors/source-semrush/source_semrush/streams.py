@@ -4,6 +4,8 @@ from typing import Any, Iterable, Mapping, MutableMapping, Optional
 import requests
 from airbyte_cdk.sources.streams.http import HttpStream
 
+from .utils import csv_to_json
+
 
 class SemrushStream(HttpStream, ABC):
     def __init__(self, api_key, domain, *args):
@@ -70,23 +72,17 @@ class IncrementalSemrushStream(SemrushStream, ABC):
 
 
 class Backlinks(SemrushStream):
-    """
-    TODO: Change class name to match the table/data source this stream corresponds to.
-    """
     primary_key = "page_source"
-    # TODO: Fill in the cursor_field. Required.
     cursor_field = "page_source"
 
-    # TODO: Fill in the primary key. Required. This is usually a unique field in the stream, like an ID or a timestamp.
     def path(self, **kwargs) -> str:
-        """
-        TODO: Override this method to define the path this stream corresponds to. E.g. if the url is https://example-api.com/v1/employees then this should
-        return "single". Required.
-        """
         return "/analytics/v1"
 
     def request_params(
-        self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, any] = None, next_page_token: Mapping[str, Any] = None
+            self,
+            stream_state: Mapping[str, Any],
+            stream_slice: Mapping[str, any] = None,
+            next_page_token: Mapping[str, Any] = None
     ) -> MutableMapping[str, Any]:
         return {
             "key": self.api_key,
@@ -98,39 +94,34 @@ class Backlinks(SemrushStream):
         }
 
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
-        return {}
+        return csv_to_json(response.text)
 
 
 class BacklinksOverview(SemrushStream):
-    """
-    TODO: Change class name to match the table/data source this stream corresponds to.
-    """
     primary_key = "page_source"
-    # TODO: Fill in the cursor_field. Required.
     cursor_field = "page_source"
 
-    # TODO: Fill in the primary key. Required. This is usually a unique field in the stream, like an ID or a timestamp.
     def path(self, **kwargs) -> str:
-        """
-        TODO: Override this method to define the path this stream corresponds to. E.g. if the url is https://example-api.com/v1/employees then this should
-        return "single". Required.
-        """
         return "/analytics/v1"
 
     def request_params(
-        self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, any] = None, next_page_token: Mapping[str, Any] = None
+            self,
+            stream_state: Mapping[str, Any],
+            stream_slice: Mapping[str, any] = None,
+            next_page_token: Mapping[str, Any] = None
     ) -> MutableMapping[str, Any]:
         return {
             "key": self.api_key,
             "type": "backlinks_overview",
             "target": "xon.so",
             "target_type": "root_domain",
-            "export_columns": "ascore,total,domains_num,urls_num,ips_num,ipclassc_num,follows_num,nofollows_num,sponsored_num,ugc_num,texts_num,images_num,forms_num,frames_num",
+            "export_columns": "ascore,total,domains_num,urls_num,ips_num,ipclassc_num,follows_num,nofollows_num,"
+                              "sponsored_num,ugc_num,texts_num,images_num,forms_num,frames_num",
             "display_limit": "1",
         }
 
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
-        return {}
+        return csv_to_json(response.text)
 
 
 class ReferringDomains(SemrushStream):
@@ -141,7 +132,10 @@ class ReferringDomains(SemrushStream):
         return "/analytics/v1"
 
     def request_params(
-        self, stream_state: Mapping[str, Any], stream_slice: Mapping[str, any] = None, next_page_token: Mapping[str, Any] = None
+            self,
+            stream_state: Mapping[str, Any],
+            stream_slice: Mapping[str, any] = None,
+            next_page_token: Mapping[str, Any] = None
     ) -> MutableMapping[str, Any]:
         return {
             "key": self.api_key,
@@ -153,7 +147,7 @@ class ReferringDomains(SemrushStream):
         }
 
     def parse_response(self, response: requests.Response, **kwargs) -> Iterable[Mapping]:
-        return {}
+        return csv_to_json(response.text)
 
 
 class ReferringIps(SemrushStream):

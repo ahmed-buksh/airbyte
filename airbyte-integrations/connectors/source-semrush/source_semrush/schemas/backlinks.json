@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "page_ascore": {
-      "type": ["null", "string"]
+      "type": ["null", "integer"]
     },
     "source_title": {
       "type": ["null", "string"]
@@ -18,16 +18,18 @@
       "type": ["null", "string"]
     },
     "external_num": {
-      "type": ["null", "string"]
+      "type": ["null", "integer"]
     },
     "internal_num": {
-      "type": ["null", "string"]
+      "type": ["null", "integer"]
     },
     "first_seen": {
-      "type": ["null", "string"]
+      "type": ["null", "string"],
+      "format": "date-time"
     },
     "last_seen": {
-      "type": ["null", "string"]
+      "type": ["null", "string"],
+      "format": "date-time"
     }
   }
 }
