@@ -36,8 +36,7 @@ class SourceSemrush(AbstractSource):
         :return Tuple[bool, any]: (True, None) if the input config can be used to connect to the API successfully, (False, error) otherwise.
         """
         try:
-            Projects(api_key=config["api_key"], domain=config["domain"])
-
+            Backlinks(api_key=config["api_key"], domain=config["domain"])
             connection = True, None
         except Exception:
             connection = False, None

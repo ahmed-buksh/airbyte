@@ -72,8 +72,7 @@ class IncrementalSemrushStream(SemrushStream, ABC):
 
 
 class Backlinks(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "source_title"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -98,8 +97,7 @@ class Backlinks(SemrushStream):
 
 
 class BacklinksOverview(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "source_url"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -125,8 +123,7 @@ class BacklinksOverview(SemrushStream):
 
 
 class ReferringDomains(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "domain"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -151,8 +148,7 @@ class ReferringDomains(SemrushStream):
 
 
 class ReferringIps(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "ip"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -174,8 +170,7 @@ class ReferringIps(SemrushStream):
 
 
 class TldDistribution(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "zone"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -197,8 +192,7 @@ class TldDistribution(SemrushStream):
 
 
 class ReferringDomainsByCountry(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "country"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -220,8 +214,7 @@ class ReferringDomainsByCountry(SemrushStream):
 
 
 class Anchors(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "anchor"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -243,8 +236,7 @@ class Anchors(SemrushStream):
 
 
 class IndexedPages(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "source_url"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -266,8 +258,7 @@ class IndexedPages(SemrushStream):
 
 
 class Competitors(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "ascore"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -289,8 +280,7 @@ class Competitors(SemrushStream):
 
 
 class AuthorityScoreProfile(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "ascore"
 
     def path(self, **kwargs) -> str:
         return "/analytics/v1"
@@ -311,8 +301,7 @@ class AuthorityScoreProfile(SemrushStream):
 
 
 class DomainOrganicSearchKeywords(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Url"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -336,8 +325,7 @@ class DomainOrganicSearchKeywords(SemrushStream):
 
 
 class DomainPaidSearchKeywords(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Keyword"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -360,8 +348,7 @@ class DomainPaidSearchKeywords(SemrushStream):
 
 
 class CompetitorsInOrganicSearch(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Domain"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -383,8 +370,7 @@ class CompetitorsInOrganicSearch(SemrushStream):
 
 
 class DomainOrganicPages(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Url"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -408,8 +394,7 @@ class DomainOrganicPages(SemrushStream):
 
 
 class DomainOrganicSubdomains(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Url"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -431,8 +416,7 @@ class DomainOrganicSubdomains(SemrushStream):
 
 
 class DomainOverviewAllDatabases(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Domain"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -454,8 +438,7 @@ class DomainOverviewAllDatabases(SemrushStream):
 
 
 class DomainOverviewOneDatabase(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Domain"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -477,8 +460,7 @@ class DomainOverviewOneDatabase(SemrushStream):
 
 
 class DomainOverviewHistory(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "Rank"
 
     def path(self, **kwargs) -> str:
         return self.url_base
@@ -500,8 +482,7 @@ class DomainOverviewHistory(SemrushStream):
 
 
 class TrafficSummary(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "target"
 
     def path(self, **kwargs) -> str:
         return "analytics/ta/api/v3/summary"
@@ -521,8 +502,7 @@ class TrafficSummary(SemrushStream):
 
 
 class TopPages(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "page"
 
     def path(self, **kwargs) -> str:
         return "analytics/ta/api/v3/summary"
@@ -547,8 +527,7 @@ class TopPages(SemrushStream):
 
 
 class DomainRankings(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "domain"
 
     def path(self, **kwargs) -> str:
         return "analytics/ta/api/v3/summary"
@@ -571,8 +550,7 @@ class DomainRankings(SemrushStream):
 
 
 class AudienceInsights(SemrushStream):
-    primary_key = "page_source"
-    cursor_field = "page_source"
+    primary_key = "target"
 
     def path(self, **kwargs) -> str:
         return "analytics/ta/api/v3/summary"
@@ -598,7 +576,7 @@ class AudienceInsights(SemrushStream):
 
 
 class DataAccuracy(SemrushStream):
-    primary_key = "page_source"
+    primary_key = None
     cursor_field = "page_source"
 
     def path(self, **kwargs) -> str:
